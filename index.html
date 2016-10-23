@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- Çirkin kod içerir -->
+<html>
+<head>
+  <title>Otomat Hackathon!</title>
+  <style>
+  body {
+    font-family: monospace;
+    width: 500px;
+    margin: auto;
+    background: #fff1e8;
+  }
+
+  header {
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    margin-top: 200px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    mix-blend-mode: exclusion;
+  }
+
+  header p {
+    font-size: 1.2em;
+  }
+
+  #background {
+    left: 0;
+    top: 0;
+    position: absolute;
+  }
+
+  .overlay {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAQAAADYv8WvAAAAEUlEQVQI12NgePyfgeE/EAIAFBUD4aE/TggAAAAASUVORK5CYII=);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+  }
+
+  span {
+    background: black;
+    display: inline-block;
+    padding: 0 3px;
+  }
+
+  canvas#canvas {
+  width: 512px; height: 512px;
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 100vmax;
+  height: 100vmax;
+
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+  border: 0px
+  }
+
+  h3 {
+    font-size: 4em;
+    letter-spacing: -3px;
+    margin: 0;
+  }
+  </style>
+</head>
+<body>
+<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+<div class="overlay"></div>
+<header>
+  <img src="logo.png" style="image-rendering: pixelated;" width="200" />
+  <h1><span>Hackathon</span></h1>
+  <h3><span>19-20 Kasım 2016</span></h3>
+  <p><span>CRUD app yapmaktan sıkılmış geliştiriciler</span> <br /> <span>olarak bir araya gelip bir şeyler yapacağız. Gelsenize!</span></p>
+</header>
+<script type="text/javascript">
+  var canvas = document.getElementById("canvas");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  var Module = {};
+  Module.canvas = canvas;
+</script>
+<script async type="text/javascript" src="butterfly.js"></script>
+</body>
+</html>
