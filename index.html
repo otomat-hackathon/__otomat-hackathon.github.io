@@ -13,13 +13,14 @@
 
   header {
     position: absolute;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    margin-top: 200px;
     width: 100%;
     text-align: center;
+    z-index: 999;
+    left: 0;
+    top: 50%;
+    text-align: center;
     color: #fff;
+    transform: translateY(-50%);
     mix-blend-mode: exclusion;
   }
 
@@ -53,7 +54,7 @@
   width: 512px; height: 512px;
   position: fixed;
   z-index: -1;
-  left: 0;
+  left: 50%;
   top: 0;
   width: 100vmax;
   height: 100vmax;
@@ -64,7 +65,8 @@
   image-rendering: optimize-contrast;
   image-rendering: pixelated;
   -ms-interpolation-mode: nearest-neighbor;
-  border: 0px
+  border: 0;
+  transform: translateX(-50%);
   }
 
   h3 {
@@ -77,6 +79,9 @@
     color: #fff;
   }
   </style>
+  <link rel="image_src" href="https://otomat-hackathon.github.io/share.jpg"/>
+  <meta property="og:image" content="https://otomat-hackathon.github.io/share.jpg" />
+  <meta name="og:description" content="Creative Coding Hackathon - 19 & 20 Kasım" />
 </head>
 <body>
 <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
