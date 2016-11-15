@@ -2,24 +2,36 @@
 <!-- Çirkin kod içerir -->
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
   <title>Otomat Hackathon!</title>
   <style>
+  @font-face {
+  font-family: 'Minecraft';
+  src: url('Minecraft.ttf');
+}
+html,
   body {
     font-family: monospace;
     width: 500px;
     margin: auto;
-    background: #fff1e8;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    animation: pageanim 5s steps(2) infinite forwards;
+    overflow: hidden;
   }
 
   header {
     position: absolute;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    margin-top: 200px;
     width: 100%;
     text-align: center;
+    z-index: 999;
+    left: 0;
+    top: 50%;
+    text-align: center;
     color: #fff;
+    transform: translateY(-50%);
     mix-blend-mode: exclusion;
   }
 
@@ -53,36 +65,216 @@
   width: 512px; height: 512px;
   position: fixed;
   z-index: -1;
-  left: 0;
+  left: 50%;
   top: 0;
   width: 100vmax;
   height: 100vmax;
 
-  image-rendering: optimizeSpeed;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: optimize-contrast;
   image-rendering: pixelated;
-  -ms-interpolation-mode: nearest-neighbor;
-  border: 0px
+  border: 0;
+  transform: translateX(-50%);
+  animation: canvasanim 5s steps(2) infinite forwards;
   }
 
   h3 {
-    font-size: 4em;
-    letter-spacing: -3px;
+    font-size: 3.5em;
     margin: 0;
+    font-weight: 100;
+    font-family: 'Minecraft', monospace;
+    font-smooth: never;
+-webkit-font-smoothing : none;
+  text-shadow: 2px 2px #2bffeb, -2px -2px #E91E63;
+  } h1 {
+    font-family: 'Minecraft', monospace;
   }
+
+  a.button {
+    display: inline-block;
+    margin-top: 10px;
+    color: #000;
+    padding: 5px 10px;
+    background: #fff;
+    box-shadow: 2px 2px #2bffeb, -2px -2px #E91E63;
+    margin: 10px 10px;
+  }
+
+  header img.otomat {
+      animation: logoanim 1s steps(1) infinite alternate;
+
+  }
+
+  .sponsors-bg {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height:100px;
+    background: #0af;
+    mix-blend-mode: color-burn;
+    z-index: 1000;
+  }
+
+  .sponsors {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 20px 0;
+    z-index: 10000;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .sponsor {
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+  }
+
+  .sponsor svg,
+  .sponsor img {
+    height: 50px;
+  }
+
+  @keyframes logoanim {
+    0% {transform: scale(1);
+    }
+    22% {
+transform: scale(1.2) translateX(3px) translateY(4px);
+    }
+    30% {
+     transform: scale(1.1) translateX(-2px) translateY(1px);
+    }
+    50% {
+      transform: scale(1.3);
+    }
+    62% {
+transform: scale(1.2) translateX(-1px) translateY(1px);
+    }
+    95% {
+transform: scale(1.4) translateX(2px) translateY(-2px);
+    }
+    100% {
+transform: scale(1);
+    }
+  }
+
+@keyframes pageanim {
+  66% {
+    transform: rotateZ(0);
+  }
+  67% {
+    transform: rotateZ(180deg);
+  }
+
+  70% {
+    transform: rotateZ(0);
+  }
+
+  97% {
+    transform: rotateZ(0);
+  }
+
+  100% {
+    transform: rotateZ(180deg);
+  }
+}
+
+@@keyframes canvasanim {
+  0% {
+    display: block;
+  }
+
+  24% {
+    display: none;
+  }
+
+  55% {
+    display: block;
+  }
+
+  80% {
+    display: none;
+  }
+}
+
   </style>
+  <link rel="image_src" href="https://otomat-hackathon.github.io/demo.jpg"/>
+  <meta property="og:image" content="https://otomat-hackathon.github.io/demo.jpg" />
+  <meta name="og:description" content="Creative Coding Hackathon - 19 & 20 Kasım" />
+
 </head>
 <body>
 <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 <div class="overlay"></div>
 <header>
-  <img src="logo.png" style="image-rendering: pixelated;" width="200" />
+  <img src="logo.png" class="otomat" style="image-rendering: pixelated;" width="200" />
   <h1><span>Hackathon</span></h1>
-  <h3><span>19-20 Kasım 2016</span></h3>
+  <h3><span>19-20 KASIM 2016</span></h3>
   <p><span>CRUD app yapmaktan sıkılmış geliştiriciler</span> <br /> <span>olarak bir araya gelip bir şeyler yapacağız. Gelsenize!</span></p>
+<!-- <p>Mekan: ATÖLYE İSTANBUL<br><svg id="logo" viewBox="0 0 60 60" version="1.1" width="30" height="30" style="padding-top: 5px">
+  <g stroke="none" stroke-width="1" fill="white" fill-rule="evenodd">
+    <g transform="translate(-180.000000, -67.000000)">
+      <path d="M210.016819,67.0000114 C209.658251,67.0000114 209.302173,67.0066422 208.948585,67.0199036 C192.471714,67.6195472 179.55764,81.3677601 180.011611,97.8259587 C180.465582,114.284157 194.117942,127.301656 210.602885,126.994681 C227.087829,126.687705 240.244676,113.170976 240.083848,96.7073182 C239.923021,80.2436609 226.504622,66.9858005 210.016819,67.0000114 L210.016819,67.0000114 L210.016819,67.0000114 Z M219.329629,110.26558 L216.500925,102.060041 L211.448601,102.060041 L211.448601,110.26558 L208.958545,110.26558 L208.958545,102.060041 L203.89128,102.060041 L201.062576,110.26558 L198.57252,110.26558 L201.876825,100.682506 L202.168161,99.8370864 L206.812116,86.3650833 L200.016753,86.3650833 L200.016753,83.8785564 L220.021865,83.8785564 L220.021865,86.3650833 L213.590049,86.3650833 L218.234004,99.8370864 L218.525341,100.682506 L221.829645,110.26558 L219.339589,110.26558 L219.329629,110.26558 L219.329629,110.26558 Z M211.448601,87.7973228 L211.448601,99.5685415 L215.639366,99.5685415 L211.82709,87.7973228 L211.448601,87.7973228 L211.448601,87.7973228 Z M204.75284,99.5685415 L208.948585,99.5685415 L208.948585,87.7973228 L208.565116,87.7973228 L204.75284,99.5685415 L204.75284,99.5685415 Z"></path>
+    </g>
+  </g>
+</svg><br><br>
+Tarihi Bomonti Bira Fabrikası
+Silahşör Cad. Birahane Sok. <br> Şişli/İstanbul</p> -->
+  <p>
+    <a class="button" href="https://gist.github.com/livacengiz/52466e2add0ad9a64b5a22c922716e8c#file-detail-md" target="BLANK">Detaylar</a>
+    <a class="button" href="mailto:neoberg@gmail.com,fatiherikli@gmail.com">İletişim</a>
+    <!--a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSeYj9YGkPnYi864R0_PEsPFbf1uiUADFGFcTUxNW_TMNqCHnQ/viewform?c=0&w=1">Başvur</a-->
+  </p>
 </header>
+<div class="sponsors-bg">
+</div>
+<div class="sponsors">
+  <a class="sponsor" target="BLANK" href="http://atolye.io" title="ATOLYE">
+  <svg id="logo" viewBox="0 0 60 60" version="1.1" width="50" height="50">
+    <g stroke="none" stroke-width="1" fill="white" fill-rule="evenodd">
+      <g transform="translate(-180.000000, -67.000000)">
+        <path d="M210.016819,67.0000114 C209.658251,67.0000114 209.302173,67.0066422 208.948585,67.0199036 C192.471714,67.6195472 179.55764,81.3677601 180.011611,97.8259587 C180.465582,114.284157 194.117942,127.301656 210.602885,126.994681 C227.087829,126.687705 240.244676,113.170976 240.083848,96.7073182 C239.923021,80.2436609 226.504622,66.9858005 210.016819,67.0000114 L210.016819,67.0000114 L210.016819,67.0000114 Z M219.329629,110.26558 L216.500925,102.060041 L211.448601,102.060041 L211.448601,110.26558 L208.958545,110.26558 L208.958545,102.060041 L203.89128,102.060041 L201.062576,110.26558 L198.57252,110.26558 L201.876825,100.682506 L202.168161,99.8370864 L206.812116,86.3650833 L200.016753,86.3650833 L200.016753,83.8785564 L220.021865,83.8785564 L220.021865,86.3650833 L213.590049,86.3650833 L218.234004,99.8370864 L218.525341,100.682506 L221.829645,110.26558 L219.339589,110.26558 L219.329629,110.26558 L219.329629,110.26558 Z M211.448601,87.7973228 L211.448601,99.5685415 L215.639366,99.5685415 L211.82709,87.7973228 L211.448601,87.7973228 L211.448601,87.7973228 Z M204.75284,99.5685415 L208.948585,99.5685415 L208.948585,87.7973228 L208.565116,87.7973228 L204.75284,99.5685415 L204.75284,99.5685415 Z"></path>
+      </g>
+    </g>
+  </svg>
+  </a>
+<a class="sponsor" target="BLANK" href="https://www.netsparker.com" title="Netsparker" style="margin-left: 40px; margin-right: 15px;"><img src="https://www.netsparker.com/v2/mg/logo.png" /></a>
+<a class="sponsor" target="BLANK" href="https://hipolabs.com" title="Hipo" style="padding-top: 5px;">
+  <svg id="hipoLogoSVG" width="100px" height="30px" viewBox="0 0 41 22" preserveAspectRatio="xMidYMid meet">
+    <path id="hipoAnimal" fill="none" stroke="#E31C37" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1" d="M7.62,20.918
+      c-1.751,0-1.988-0.188-2.13-0.455c-0.164-0.307-0.082-0.709,0.137-1.672c0.151-0.664,0.334-1.471,0.377-2.187
+      c-2.208-1.195-3.76-2.911-4.384-4.86c-0.655-2.051-0.117-3.292,0.403-4.49l0.111-0.259c0.095-0.227,0.21-0.421,0.316-0.6
+      c0.153-0.257,0.232-0.397,0.214-0.531C2.605,5.786,2.194,5.628,1.949,5.534c-0.6-0.23-1.28-0.491-1.418-1.137
+      c-0.077-0.36-0.007-0.71,0.194-0.959c0.178-0.22,0.439-0.341,0.736-0.341c0.251,0,0.523,0.086,0.808,0.257
+      c0.181,0.108,0.338,0.21,0.479,0.302c0.414,0.267,0.606,0.386,0.838,0.386c0.034,0,0.068-0.002,0.104-0.007
+      c0.123-0.016,0.19-0.072,0.402-0.286c0.06-0.061,0.123-0.124,0.192-0.189c0.581-0.544,1.274-0.964,2.248-1.361
+      c1.531-0.622,2.597-0.714,4.532-0.881l0.109-0.009c0.19-0.017,0.423-0.044,0.679-0.073c0.645-0.074,1.448-0.166,2.122-0.166
+      c0.101,0,0.5,0.01,0.5,0.01c0.239,0,0.565-0.009,0.949-0.02c0.563-0.016,1.249-0.035,1.971-0.035c1.683,0,2.941,0.106,3.844,0.325
+      c0.528,0.13,1.293,0.466,1.666,0.678c0.214,0.01,0.438,0.014,0.668,0.014c0.249,0,1.305-0.017,1.574-0.017
+      c0.775,0,1.555,0.035,2.225,0.217c-0.165-0.388-0.288-0.803-0.099-1.196C27.44,0.698,27.771,0.5,28.18,0.5
+      c0.463,0,1.058,0.284,1.211,0.743c0.049,0.163,0.057,0.348,0.044,0.585c0.078-0.094,0.173-0.177,0.289-0.24
+      c0.25-0.132,0.538-0.205,0.814-0.205c0.577,0,1.001,0.316,1.105,0.826c0.105,0.54-0.394,0.841-0.795,1.083
+      c-0.775,0.469-0.795,0.615-0.653,0.884c0.154,0.293,1.332,1.231,1.983,1.622c0.15,0.093,0.35,0.162,0.561,0.235
+      c0.205,0.071,0.411,0.145,0.599,0.239c0.68,0.339,2.255,0.65,3.195,0.836c0.386,0.076,0.69,0.137,0.842,0.179
+      c0.834,0.229,1.345,0.58,1.883,1.292c0.592,0.788,0.798,3.564,0.192,4.923c-0.423,0.942-0.601,1.167-1.181,1.715
+      c-0.608,0.574-2.231,0.831-3.57,0.831c-0.692,0-1.994-0.072-2.937-0.557c-0.676-0.349-1.435-0.822-2.104-1.241
+      c-0.247-0.154-0.485-0.303-0.708-0.438c-0.01,0.093-0.013,0.198-0.015,0.324c-0.006,0.317-0.014,0.713-0.188,1.162
+      c-0.237,0.611-0.799,0.871-1.251,1.08c-0.293,0.135-0.552,0.255-0.715,0.437c0.029,0.484,0.146,1.152,0.241,1.7
+      c0.178,1.013,0.219,1.288,0.088,1.529c-0.104,0.205-0.255,0.499-3.62,0.499c-1.341,0-1.503-0.096-1.621-0.165
+      c-0.479-0.288-0.296-0.85-0.02-1.699c0.146-0.45,0.536-1.646,0.344-1.87c-0.197-0.23-0.462-0.329-0.887-0.329
+      c-0.447,0-1.015,0.11-1.672,0.239c-0.951,0.186-2.134,0.417-3.512,0.417c-0.001,0-0.002,0-0.004,0
+      c-0.016,0.49,0.213,1.309,0.348,1.79c0.196,0.7,0.272,0.995,0.176,1.259c-0.099,0.272-0.222,0.611-2.995,0.611
+      c-1.79,0-1.959-0.154-2.083-0.267c-0.293-0.281-0.224-0.669-0.071-1.519c0.077-0.425,0.221-1.228,0.183-1.656
+      c-0.16,0.003-0.343,0.02-0.528,0.035c-0.125,0.011-0.25,0.021-0.371,0.029c0.035,0.479,0.105,1.049,0.165,1.532
+      c0.081,0.663,0.12,0.989,0.106,1.172C11.025,20.46,10.991,20.918,7.62,20.918z"></path>
+  </svg>
+</a>
+<a class="sponsor" target="BLANK" href="http://caykahveinsan.com/" title="Cay Kahve Insan" style="margin-left: 20px;"><img style="background: #000; height: 70px;" src="http://caykahveinsan.com/wp-content/uploads/2016/05/cay-kahve-insan-logo-white-transparent.png" /></a>
+</div>
 <script type="text/javascript">
   var canvas = document.getElementById("canvas");
   canvas.width = window.innerWidth;
